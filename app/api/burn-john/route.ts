@@ -4,7 +4,7 @@ import { mockInteractions, mockJohnBurned } from "@/lib/mock-db"
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { johnId } = body as { johnId: string }
+    const { johnId, note } = body as { johnId: string; note?: string }
 
     if (!johnId) {
       return NextResponse.json({ success: false, message: "Missing John's Anonymous ID." }, { status: 400 })
@@ -22,8 +22,12 @@ export async function POST(request: Request) {
       )
     }
 
-    mockJohnBurned.set(johnId, true)
-    console.log(`Server: JohnID ${johnId} burned by Worker ${mockWorkerSessionId}`)
+    mockJohnBurned.set(johnId, {
+      burned: true,
+      note: note || undefined,
+      timestamp: Date.now(),
+    })
+    console.log(`Server: JohnID ${johnId} burned by Worker ${mockWorkerSessionId} with note: ${note}`)
 
     return NextResponse.json({
       success: true,

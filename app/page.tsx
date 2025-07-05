@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Users, Zap, Lock, BookOpen, ArrowRight, Layers, GitFork, CuboidIcon as Cube } from "lucide-react"
+import { Users, Zap, BookOpen, ArrowRight, Layers, GitFork, CuboidIcon as Cube, Award } from "lucide-react"
 
 export default function LandingPage() {
   return (
@@ -123,13 +123,13 @@ export default function LandingPage() {
                   </span>
                   <h4 className="font-semibold text-lg text-white">Authorize Interaction</h4>
                   <p className="text-gray-400">
-                    You present your `JohnID` and scan the service provider's (Mary's) unique request code to signal
-                    your consent for logging the interaction.
+                    You present your `JohnID` and scan the service provider's unique request code to signal your consent
+                    for logging the interaction.
                   </p>
                 </li>
               </ol>
             </div>
-            {/* Mary's Flow */}
+            {/* Worker's Flow */}
             <div className="space-y-8">
               <h3 className="text-2xl font-semibold text-gray-200 text-center">
                 For the Worker (The Service Provider)
@@ -142,7 +142,7 @@ export default function LandingPage() {
                   <h4 className="font-semibold text-lg text-white">Check John's ID</h4>
                   <p className="text-gray-400">
                     Before the interaction, you ask for the client's `JohnID` and perform an instant check to ensure it
-                    is not already burned.
+                    is not already burned and to see their positive vouch count.
                   </p>
                 </li>
                 <li className="ml-8">
@@ -159,10 +159,19 @@ export default function LandingPage() {
                   <span className="absolute flex items-center justify-center w-8 h-8 bg-gray-800 rounded-full -left-4 ring-4 ring-gray-800 text-gray-300">
                     3
                   </span>
-                  <h4 className="font-semibold text-lg text-white">Burn a JohnID</h4>
+                  <h4 className="font-semibold text-lg text-white">Burn a John</h4>
                   <p className="text-gray-400">
-                    If the interaction was harmful, you can "burn" the `JohnID`. The system requires the prior mutually
-                    authorized log, preventing misuse.
+                    If the interaction was harmful, you can "burn" the `JohnID` and add context.
+                  </p>
+                </li>
+                <li className="ml-8">
+                  <span className="absolute flex items-center justify-center w-8 h-8 bg-gray-800 rounded-full -left-4 ring-4 ring-gray-800 text-gray-300">
+                    4
+                  </span>
+                  <h4 className="font-semibold text-lg text-white">Vouch for a Client</h4>
+                  <p className="text-gray-400">
+                    For positive interactions, you can give a 'vouch' to a `JohnID`. This contributes to a positive
+                    reputation, helping good clients stand out.
                   </p>
                 </li>
               </ol>
@@ -193,15 +202,15 @@ export default function LandingPage() {
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
               <h3 className="font-semibold text-xl text-gray-200 mb-3">Verifiable & Trustworthy</h3>
               <p className="text-gray-400">
-                The "must-interact-before-burn" rule is now strengthened by <strong>mutual consent</strong>. Your burn
-                action is backed by a verifiable, on-chain proof of a pre-authorized interaction.
+                Your burn action is backed by a verifiable, on-chain proof of a pre-authorized interaction, preventing
+                misuse.
               </p>
             </div>
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-              <h3 className="font-semibold text-xl text-gray-200 mb-3">Total Anonymity</h3>
+              <h3 className="font-semibold text-xl text-gray-200 mb-3">Build a Trusted System</h3>
               <p className="text-gray-400">
-                Your real-world identity is never linked to your on-chain actions. ZKPassport ensures you are a valid
-                user without revealing who you are.
+                Reward good clients with vouches and provide context for burns. This creates a more nuanced and fair
+                reputation system for everyone.
               </p>
             </div>
             <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
@@ -236,16 +245,16 @@ export default function LandingPage() {
                 icon: Layers,
               },
               {
-                title: "Privacy",
+                title: "Verified Burns with Notes",
                 description:
-                  "John's real-world identity is never revealed, as only his anonymous <code>JohnID</code> is used. Workers also operate with full anonymity, never having to disclose personal information to use the system.",
-                icon: Lock,
+                  "Only a Worker who has a <strong>mutually authorized</strong> interaction with a JohnID can burn that tag. An optional, private note can be added for context.",
+                icon: Zap,
               },
               {
-                title: "Verified Burns",
+                title: "Positive Reputation",
                 description:
-                  "Only a Worker who has a <strong>mutually authorized</strong> interaction with a JohnID can burn that tag.",
-                icon: Zap,
+                  "A vouching system allows Workers to reward good clients, creating a balanced reputation that isn't solely focused on negative interactions.",
+                icon: Award,
               },
               {
                 title: "Decentralized Trust",
